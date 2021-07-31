@@ -1,0 +1,33 @@
+{
+  "name": "save-your-money",
+  "version": "1.0.0",
+  "description": "Save your money looking for product discounts",
+  "main": "index.ts",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yasniel1408/save-your-money.git"
+  },
+  "keywords": [
+    "save-your-money"
+  ],
+  "author": "Leo Poll and Yasniel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yasniel1408/save-your-money/issues"
+  },
+  "homepage": "https://github.com/yasniel1408/save-your-money#readme",
+  "dependencies": {
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.3.2"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@typescript-eslint/parser": "^4.28.5",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4"
+  }
+}
