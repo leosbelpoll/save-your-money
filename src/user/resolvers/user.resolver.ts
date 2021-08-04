@@ -1,7 +1,7 @@
 import User from '../dao/user.dao'
 
 class UserResolver {
-  resolver
+  private resolver: {}
 
   constructor() {
     this.resolver = {
@@ -25,32 +25,32 @@ class UserResolver {
   }
 
   //query
-  getUsersCount = async (parent, args, { req }) => {
+  getUsersCount = async (parent: any, args: any) => {
     return await User.getUsersCount()
   }
 
-  getUsers = async (parent, args, { req }) => {
+  getUsers = async (parent: any, args: any) => {
     return await User.getUsers(args.input.limit, args.input.page)
   }
 
-  getUserByEmail = async (parent, args, { req }) => {
+  getUserByEmail = async (parent: any, args: any) => {
     return await User.getUserByEmail(args.input.email)
   }
 
-  getUserById = async (parent, args, { req }) => {
+  getUserById = async (parent: any, args: any) => {
     return await User.getUserById(args.input.id)
   }
 
   //mutation
-  addUser = async (parent, args, context) => {
+  addUser = async (parent: any, args: any) => {
     return await User.addUser(args.input)
   }
 
-  removeUserById = async (parent, args, context) => {
+  removeUserById = async (parent: any, args: any) => {
     return await User.removeUserById(args.input.id)
   }
 
-  updateUserById = async (parent, args, context) => {
+  updateUserById = async (parent: any, args: any) => {
     return await User.updateUserById(args.input.id, args.input)
   }
 }

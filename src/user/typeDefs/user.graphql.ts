@@ -2,7 +2,7 @@ import { gql } from 'apollo-server-express'
 
 const UserTypeDefs = gql`
   type User {
-    id: id!
+    id: ID!
     identification: String!
     email: String!
     password: String!
@@ -27,15 +27,11 @@ const UserTypeDefs = gql`
     lastName: String!
     avatar: String!
   }
-  # input type
-  input UserId {
-    id: Number!
-  }
   # mutations
   type Mutation {
     addUser(input: UserInput!): User!
-    removeUserById(id: UserId, input: UserInput!): User!
-    updateUserById(id: UserId, input: UserInput!): User!
+    removeUserById(id: ID!, input: UserInput!): User!
+    updateUserById(id: ID!, input: UserInput!): User!
   }
 `
 export default UserTypeDefs
