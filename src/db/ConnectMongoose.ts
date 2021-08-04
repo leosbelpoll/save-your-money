@@ -1,10 +1,12 @@
 import mongoose from 'mongoose'
+
 require('dotenv').config()
 
 const mongo_uri: any = process.env.MONGO_URI
 
 class ConnectMongoose {
   private count = 0
+
   private mongooseOptions = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
