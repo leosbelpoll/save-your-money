@@ -2,6 +2,8 @@ import express from 'express'
 import { ApolloServer } from 'apollo-server-express'
 import cors from 'cors'
 import './src/db/ConnectMongoose'
+import userResolver from './src/user/resolvers/user.resolver'
+import UserTypeDefs from './src/user/typeDefs/user.graphql'
 require('dotenv').config()
 
 const app = express()
@@ -9,11 +11,11 @@ const port = process.env.PORT
 app.use(cors())
 app.use(express.json())
 
-let apolloServer: ApolloServer = null
+let apolloServer: ApolloServer
 async function startServer() {
   apolloServer = new ApolloServer({
-    typeDefs: [//add typeDefs ],
-    resolvers: [//add resolvers],
+    typeDefs: [UserTypeDefs],
+    resolvers: [userResolver.getResolver()],
   })
   await apolloServer.start()
   apolloServer.applyMiddleware({ app })
