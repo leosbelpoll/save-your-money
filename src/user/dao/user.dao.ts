@@ -1,18 +1,16 @@
+import shortid from 'shortid'
 import connectMongoose from '../../db/ConnectMongoose'
 import { CreateUserDto } from '../dtos/create.user.dto'
 import { PatchUserDto } from '../dtos/patch.user.dto'
 import { PutUserDto } from '../dtos/put.user.dto'
-
 class UsersDao {
   Schema = connectMongoose.getMongoose().Schema
 
   userSchema = new this.Schema(
     {
       id: {
-        type: Number,
-        required: true,
+        type: String,
         unique: true,
-        autoIncrement: true,
         primaryKey: true,
       },
       identification: {
@@ -51,7 +49,9 @@ class UsersDao {
   constructor() {}
 
   async addUser(userFields: CreateUserDto) {
+    const userId = shortid.generate()
     const user = new this.User({
+      id: userId,
       ...userFields,
     })
     await user.save()
@@ -63,22 +63,19 @@ class UsersDao {
   }
 
   async removeUserById(userId: string) {
-    return this.User.deleteOne({ id: userId }).exec()
+    return this.User.deleteOne({ email: userId }).exec()
   }
 
   async getUserById(userId: string) {
     return this.User.findOne({ id: userId }).populate('User').exec()
   }
 
-  async getUsers(limit = 25, page = 0) {
-    return this.User.find()
-      .limit(limit)
-      .skip(limit * page)
-      .exec()
+  async getUsers() {
+    return this.User.find().exec()
   }
 
   async getUsersCount() {
-    return this.User.find().count()
+    return this.User.find().count().exec()
   }
 
   async updateUserById(userId: string, userFields: PatchUserDto | PutUserDto) {

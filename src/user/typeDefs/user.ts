@@ -14,8 +14,6 @@ const UserTypeDefs = gql`
   type Query {
     getUsersCount: Int!
     getUsers: [User!]!
-    getUserByEmail: User!
-    getUserById: User!
   }
 
   # input type
@@ -30,8 +28,10 @@ const UserTypeDefs = gql`
   # mutations
   type Mutation {
     addUser(input: UserInput!): User!
-    removeUserById(id: ID!, input: UserInput!): User!
     updateUserById(id: ID!, input: UserInput!): User!
+    removeUserById(id: ID!): User!
+    getUserByEmail(email: String!): User!
+    getUserById(id: ID!): User!
   }
 `
 export default UserTypeDefs

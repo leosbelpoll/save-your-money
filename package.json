@@ -24,6 +24,7 @@
   "homepage": "https://github.com/yasniel1408/save-your-money#readme",
   "dependencies": {
     "@types/node": "^16.4.8",
+    "@types/shortid": "^0.0.29",
     "apollo-server-express": "^3.1.1",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
